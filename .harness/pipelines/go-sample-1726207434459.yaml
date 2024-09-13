@@ -1,0 +1,35 @@
+pipeline:
+  identifier: Build_go_sample_1726207436873
+  name: Build go-sample
+  orgIdentifier: default
+  projectIdentifier: Sample
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: GitHub_Connector
+        repoName: go-sample
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          caching:
+            enabled: true
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: echo
+                  name: echo
+                  spec:
+                    command: echo hello world
+                  timeout: ""
+                  type: Run
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        type: CI
